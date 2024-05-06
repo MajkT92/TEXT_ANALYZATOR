@@ -7,16 +7,7 @@ Vyžádá si od uživatele přihlašovací jméno a heslo,
 zjistí, jestli zadané údaje odpovídají někomu z registrovaných uživatelů,
 pokud je registrovaný, pozdrav jej a umožni mu analyzovat texty,
 pokud není registrovaný, upozorni jej a ukonči program.**
-Registrováni jsou následující uživatelé:
 
-+------+-------------+
-| user |   password  |
-+------+-------------+
-| bob  |     123     |
-| ann  |   pass123   |
-| mike | password123 |
-| liz  |   pass123   |
-+------+-------------+
 Program nechá uživatele vybrat mezi třemi texty, uloženými v proměnné TEXTS:
 
 Pokud uživatel vybere takové číslo textu, které není v zadání, program jej upozorní a skončí,
