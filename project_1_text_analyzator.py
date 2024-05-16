@@ -55,7 +55,7 @@ print(cara) #dekorace, grafika
 user_choice_index = int(input("Enter a number btw. 1 and 3 to select: 1: ")) - 1
 print(cara) #dekorace, grafika
 
-user_choice = str(TEXTS[user_choice_index])
+user_choice = TEXTS[user_choice_index]
 pocet_slov = len(user_choice.split()) #pocet slov
 
 print(f"There are {pocet_slov} words in the selected text.") #Celkový počet slov
