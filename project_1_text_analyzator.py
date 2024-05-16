@@ -47,7 +47,7 @@ if login_username == username[0] and login_password == password[0]:
     print(f"Welcome to the app, {login_username}")
 elif login_username != username[0]:
     print("unregistered user, terminating the program..")
-    (quit()) #v případě, že uživatel není registrovaný
+    quit() #v případě, že uživatel není registrovaný
 
 print("We have 3 texts to be analyzed.")
 print(cara) #dekorace, grafika
