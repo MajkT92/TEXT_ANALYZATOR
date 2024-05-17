@@ -52,11 +52,17 @@ elif login_username != username[0]:
 print("We have 3 texts to be analyzed.")
 print(cara) #dekorace, grafika
 
-user_choice_index = int(input("Enter a number btw. 1 and 3 to select: 1: ")) - 1
+user_choice_index = input("Enter a number btw. 1 and 3 to select: 1: ")
+if user_choice_index.isdigit():
+    user_choice_index = int(user_choice_index) - 1
+else:
+    print("Wrong choice, nezadali jste číslo, ale písmeno")
 print(cara) #dekorace, grafika
 
 user_choice = TEXTS[user_choice_index]
+
 pocet_slov = len(user_choice.split()) #pocet slov
+
 
 print(f"There are {pocet_slov} words in the selected text.") #Celkový počet slov
 
