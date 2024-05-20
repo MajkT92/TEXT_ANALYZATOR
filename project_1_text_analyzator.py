@@ -43,11 +43,17 @@ login_username = input("Your username: ")
 login_password = input("Your password: ")
 print(cara) #dekorace, grafika
 
-if login_username == username[0] and login_password == password[0]:
-    print(f"Welcome to the app, {login_username}")
-elif login_username != username[0]:
-    print("unregistered user, terminating the program..")
-    quit() #v případě, že uživatel není registrovaný
+if login_username in username:
+    user_index = username.index(login_username)
+    if login_password == password[user_index]:
+        print(f"Welcome to the app, {login_username}")
+    else:
+        print("Incorrect password, terminating the program..")
+        quit()  # v případě, že heslo je nesprávné
+else:
+    print("Unregistered user, terminating the program..")
+    quit()  # v případě, že uživatel není registrovaný
+
 
 print("We have 3 texts to be analyzed.")
 print(cara) #dekorace, grafika
@@ -56,30 +62,38 @@ user_choice_index = input("Enter a number btw. 1 and 3 to select: 1: ")
 if user_choice_index.isdigit():
     user_choice_index = int(user_choice_index) - 1
 else:
-    print("Wrong choice, nezadali jste číslo, ale písmeno")
+    print("wrong input, terminating the program..")
+    quit()
 print(cara) #dekorace, grafika
 
 user_choice = TEXTS[user_choice_index]
 
-pocet_slov = len(user_choice.split()) #pocet slov
+pocet_slov = 0
+title_pocet = 0
+uppercase_pocet = 0
+lower_pocet = 0
+number_pocet = 0
+number_soucet_textu = 0
+number_soucet = 0
+
+for analyze in user_choice.split(): #for loop pro analýzu
+    pocet_slov += 1
+    if analyze.istitle():
+        title_pocet += 1
+    if analyze.isupper():
+        uppercase_pocet += 1
+    if analyze.islower():
+        lower_pocet += 1
+    if analyze.isdigit():
+        number_pocet += 1
+        number_soucet += int(analyze)
 
 
 print(f"There are {pocet_slov} words in the selected text.") #Celkový počet slov
-
-title_pocet = sum(1 for char in user_choice.split() if char.istitle())
 print(f"There are {title_pocet} titlecase words.") #Počet slov začínající velkým
-
-uppercase_pocet = sum(1 for char in user_choice.split() if char.isupper())
 print(f"There are {uppercase_pocet} uppercase words.") #Počet slov psaný velkými
-
-lower_pocet = sum(1 for char in user_choice.split() if char.islower())
 print(f"There are {lower_pocet} lowercase words.") #Počet slov psaný malými
-
-number_pocet = sum(1 for char in user_choice.split() if char.isnumeric())
 print(f"There are {number_pocet} numeric strings.") #Počet stringu v textu
-
-number_soucet_textu = [int(word) for word in user_choice.split() if word.isnumeric()]
-number_soucet = sum(number_soucet_textu)
 print(f"The sum of all the numbers {number_soucet}") #Součet
 
 delka_slova = {}  # deklace pro slova
@@ -92,8 +106,7 @@ print("LEN|     OCCURRENCES     |NR.")
 print(cara)
 
 for length, count in sorted(delka_slova.items()):  # zobrazení grafu
-    print(f"{length:3}| {"*" * count:<19} | {count}")
-
+    print(f"{length:3}| {"*" * count:19} | {count}")
 
 
 
